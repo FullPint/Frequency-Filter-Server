@@ -1,0 +1,10 @@
+name: filtering_server-dev
+channels:
+  - anaconda
+  - conda-forge
+dependencies:
+  - python=3.7
+  - flask=1.0.2
+  - numpy=1.*
+  - watchdog=0.8.3
+  - opencv=3.*
