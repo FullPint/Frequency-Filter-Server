@@ -1,0 +1,83 @@
+{% extends "base.html" %} {% block content %}
+    <form method=post enctype=multipart/form-data>
+        <h1>Upload New File</h1>
+        <div class="form-group">
+            <input class="form-control-file" id="original-image" type="file" name='file'>
+        </div>
+        <div class="form-group">
+            <h1>Select FFT Implemntation</h1>
+            <div class="form-check">
+                <input checked class="form-check-input" id="numpy" name="fftImplemntation" type="radio" value="numpy">
+                <label class="form-check-label" for="numpy">Numpy</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" id="team" name="fftImplemntation" type="radio" value="team">
+                <label class="form-check-label" for="team">Team B5</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <h1>Select Filter</h1>
+            <div class="form-check">
+                <input checked class="form-check-input" id="ilpf" name="filter" type="radio" value="ideal_low">
+                <label class="form-check-label" for="ideal_low">Ideal Low Pass</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" id="ihpf" name="filter" type="radio" value="ideal_high">
+                <label class="form-check-label" for="ideal_high">Ideal High Pass</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" id="blpf" name="filter" type="radio" value="butter_low">
+                <label class="form-check-label" for="butter_low">Butterworth Low Pass</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" id="bhpf" name="filter" type="radio" value="butter_high">
+                <label class="form-check-label" for="butter_high">Butterworth High Pass</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" id="glpf" name="filter" type="radio" value="gauss_low">
+                <label class="form-check-label" for="gauss_low">Gaussian Low Pass</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" id="ghpf" name="filter" type="radio" value="gauss_high">
+                <label class="form-check-label" for="gauss_high">Gaussian High Pass</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" id="ibpf" name="filter" type="radio" value="ideal_band_pass">
+                <label class="form-check-label" for="ibpf">Ideal Band Pass Filter</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" id="ibrf" name="filter" type="radio" value="ideal_band_reject">
+                <label class="form-check-label" for="ibrf">Ideal Band Reject Filter</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" id="bbrf" name="filter" type="radio" value="butter_band_reject">
+                <label class="form-check-label" for="bbrf">Butterworth Band Reject Filter</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" id="bbpf" name="filter" type="radio" value="butter_band_pass">
+                <label class="form-check-label" for="bbpf">Butterworth Band Pass Filter</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" id="gbpf" name="filter" type="radio" value="gauss_band_pass">
+                <label class="form-check-label" for="gbpf">Gaussian Band Pass Filter</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" id="gbrf" name="filter" type="radio" value="gauss_band_reject">
+                <label class="form-check-label" for="gbrf">Gaussian Band Reject Filter</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" id="laplacf" name="filter" type="radio" value="laplace">
+                <label class="form-check-label" for="laplac">Laplacian Filter</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" id="hbf" name="filter" type="radio" value="high_boost">
+                <label class="form-check-label" for="high_boost">High Boost Filter</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" id="usmf" name="filter" type="radio" value="unsharp_mask">
+                <label class="form-check-label" for="unsharp_mask">Unsharp Mask Filter</label>
+            </div>
+        </div>
+        <button class="btn btn-dark" type="submit" value="Upload">Submit</button>
+    </form>
+  {% endblock %}

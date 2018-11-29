@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+  <form method=post enctype=multipart/form-data action="{{ url_for('front_end.result') }}">
+    <img src="{{url_for('static', filename=image)}}" />
+    <div class="form-group">
+        <input id={{image}} name="image_file" value={{image}}>
+        <label for="form-group"></label>
+    </div>
+    <div class="form-group">
+        <h1>Implemntation</h1>
+        <div class="form-check">
+            <input checked class="form-check-input" id={{implementation}} name="fftImplemntation" type="radio" value={{implementation}}>
+            <label class="form-check-label" for={{implementation}}>{{implementation}}</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <h1>Filter</h1>
+        <div class="form-check">
+            <input checked class="form-check-input" id={{filter}} name="filter" type="radio" value={{filter}}>
+            <label class="form-check-label" for={{filter}}>{{filter}}</label>
+        </div>
+    </div>
+    {% if filter|string == 'high_boost' %}
+    <div class="form-group">
+      <h1>A Value</h1>
+      <label for="a_value">A Value: </label>
+      <input type="text" class="form-control" id="a_value" name="a_value" placeholder="">
+    </div>
+    {% endif %}
+    {% if filter|string == 'ideal_low' %}
+    <div class="form-group">
+      <h1>Cut Off </h1>
+      <label for="a_value">Cut off: </label>
+      <input type="text" class="form-control" id="cutoff_value" name="cutoff_value" placeholder="">
+    </div>
+    {% endif %}
+    {% if filter|string == 'ideal_high' %}
+    <div class="form-group">
+      <h1> Cut off </h1>
+      <label for="a_value">Cut Off: </label>
+      <input type="text" class="form-control" id="cutoff_value" name="cutoff_value" placeholder="">
+    </div>
+    {% endif %}
+    <button class="btn btn-dark" type="submit" value="Confirm">Confirm</button>
+  </form>
+{% endblock %}

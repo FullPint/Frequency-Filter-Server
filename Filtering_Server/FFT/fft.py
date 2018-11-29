@@ -24,12 +24,12 @@ class FFT_DIP:
             """
         return vector.astype(int)
 
-    def fft2d(self, matrix):
+    def fft2(self, matrix):
         matrix = np.apply_along_axis(self.fft, axis=1, arr=matrix)
         matrix = np.apply_along_axis(self.fft, axis=0, arr=matrix)
         return matrix
 
-    def ifft2d(self, matrix):
+    def ifft2(self, matrix):
         matrix = np.apply_along_axis(self.ifft, axis=1, arr=matrix)
         matrix = np.apply_along_axis(self.ifft, axis=0, arr=matrix)
         return matrix
@@ -41,7 +41,7 @@ class FFT_DIP:
         axis_shifter = [arr.shape[i]//2 for i in num_axes]
         return np.roll(arr, axis_shifter, num_axes)
 
-    def fftunshift(self, arr):
+    def ifftshift(self, arr):
         # multi axis circle un-shifting
         arr = np.asarray(arr)
         num_axes = tuple(range(arr.ndim))

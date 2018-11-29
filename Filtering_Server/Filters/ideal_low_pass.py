@@ -1,11 +1,10 @@
 import numpy as np
+from .filter import Filter
 
-def IdealLowPass:
+class IdealLowPass(Filter):
     def __init__(self, shape, cutoff):
-        self.p = shape[0]
-        self.q = shape[1]
+        super().__init__(shape)
         self.cutoff = cutoff
-        self.filter = self.build_filter()
 
     def build_filter(self):
         filter = np.zeroes((self.p, self.q))
@@ -20,6 +19,3 @@ def IdealLowPass:
     def calculate_distance(self, u, v):
         dist = np.sqrt(np.square(u - (self.p/2)) + np.square(v - (self.q/2)))
         return dist
-
-    def get_filter(self):
-        return self.filter  

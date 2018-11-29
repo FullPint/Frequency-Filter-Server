@@ -1,9 +1,10 @@
 import numpy as np
+from .filter import Filter
 
 class Laplace:
     def __init__(self, shape):
-        self.p = shape[0]
-        self.q = shape[1]
+        self.p = shape[0] * 2
+        self.q = shape[1] * 2
         self.filter = self.build_filter()
 
     def build_filter(self):
