@@ -1,14 +1,12 @@
 import numpy as np
 from .filter import Filter
 
-class Laplace:
+class Laplace(Filter):
     def __init__(self, shape):
-        self.p = shape[0] * 2
-        self.q = shape[1] * 2
-        self.filter = self.build_filter()
+        super().__init__(shape)
 
     def build_filter(self):
-        filter = np.zeroes((self.p, self.q))
+        filter = np.zeros(self.shape)
         index_iterator = np.nditer(filter, flags=['multi_index'])
         while not index_iterator.finished:
             u = index_iterator.multi_index[0]
@@ -16,6 +14,3 @@ class Laplace:
             filter[u][v] = 1 + (np.square(u - self.p) + np.square(v - self.q))
             index_iterator.iternext()
         return filter
-
-    def get_laplace(self):
-        return self.filter

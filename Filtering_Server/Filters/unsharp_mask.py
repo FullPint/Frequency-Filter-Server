@@ -2,5 +2,5 @@ from high_boost import HighBoost
 from .filter import Filter
 
 class UnsharpMask(HighBoost):
-    def __init__(self, shape, hp):
-        HighBoost.__init__(self, shape, hp, A=1)
+    def __init__(self, shape, cutoff):
+        super().__init__(shape, cutoff, A=1)
