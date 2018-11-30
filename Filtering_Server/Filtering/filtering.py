@@ -15,23 +15,25 @@ class Filtering:
 
     def get_filter(self):
         if self.filter_name == "buttertworth_high_pass":
-            filter = Filters.ButterWorthHighPass(self.shape)
+            filter = Filters.ButterWorthHighPass(self.shape, self.cutoff, self.order)
         elif self.filter_name == "butterworth_low_pass":
-            filter = Filters.ButterWorthLowPass(self.shape)
+            filter = Filters.ButterWorthLowPass(self.shape, self.cutoff, self.order)
+        elif self.filter_name == "gaussian_high_pass":
+            filter = Filters.GaussiaHighPass(self.shape, self.cutoff)
         elif self.filter_name == "gaussian_low_pass":
             filter = Filters.GaussianLowPass(self.shape, self.cutoff)
         elif self.filter_name == "high_boost":
             filter = Filters.HighBoost(self.shape, self.cutoff, self.A)
         elif self.filter_name == "ideal_high_pass":
-            filter = Filters.IdealHighPass(self.shape)
+            filter = Filters.IdealHighPass(self.shape, self.cutoff)
         elif self.filter_name == "ideal_low_pass":
             filter = Filters.IdealLowPass(self.shape, self.cutoff)
         elif self.filter_name == "laplacian_filter":
-            filter = Filters.Laplace(self.shape)
+            filter = Filter.Laplace(self.shape)
         elif self.filter_name == "unsharp_mask":
-            filter = Filters.UnsharpMask(self.shape, self.cutoff)
+            filter = Filters.UnsharpMask(self.shape)
         else:
-            filter = np.zeros(self.shape)
+            filter = Filters.filter(self.shape)
         return filter
 
     def apply_filter(self):
