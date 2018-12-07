@@ -1,6 +1,10 @@
 import numpy as np
-from .filter import Filter
+from .ideal_band_pass import IdealBandPass
 
-class IdealBandReject(Filter):
-    def __init__(self, shape):
-        Filter.__init__(self, shape)
+class IdealBandReject(IdealBandPass):
+    def __init__(self, shape, cutoff, width):
+        super().__init__(shape, cutoff, width)
+
+    def build_filter(self):
+        super().build_filter()
+        self.mask = 1 - super().get_filter()
