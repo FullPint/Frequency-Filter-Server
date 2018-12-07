@@ -44,10 +44,15 @@ While it doesn't affect the results, the following images will be generated with
 The ideal lowpass filter is the simplest lowpass filter; it essentially "cuts off" all components of the Fourier transform that are higher than a certain cutoff. This cutoff is the distance from the origin of the Fourier transformed image.
 
 ![Lenna | Ideal Lowpass Filter with cutoff of 20 versus a cutoff of 100](report/images/Lenna_ilp_20v100.png)
-*Ideal lowpass filter applied to Lenna.png. On the left is a cutoff of 20, and on the right is a cutoff of 100*
+
+*Ideal lowpass filter applied to Lenna.png. On the left is a cutoff of 20, and on the right is a cutoff of 100. Note the "ring" effect visible on both images.*
 
 #### Butterworth Lowpass
+The Butterworth lowpass filter is different from the ideal lowpass filter in that it does not have a sharp cutoff value, but instead smoothly transitions between high and low frequencies. A Butterworth lowpass filter with a higher order will produce an image with 'more' lowpass filtering but also will exhibit much more ringing. An order of 2 is usually considered acceptable for most purposes, as it produces a good compromise between lowpass filtering and reducing ringing.
 
+![Lenna | Butterworth Lowpass Filter with order of 2 and cutoff of 20 versus order of 2 and cutoff of 100](report/images/Lenna_blp_o2_20v100.png)
+
+*Butterworth lowpass filter applied to Lenna.png. On the left is a cutoff of 20 and on the right is a cutoff of 100. Both images have an order of 2.*
 
 #### Gaussian Lowpass
 
