@@ -4,6 +4,8 @@ from .filter import Filter
 class GaussianBandPass(Filter):
     def __init__(self, shape, cutoff, width):
         super().__init__(shape)
+        self.cutoff = cuttoff
+        self.width = width
 
     def build_filter(self):
         mask = np.zeros(self.shape)
