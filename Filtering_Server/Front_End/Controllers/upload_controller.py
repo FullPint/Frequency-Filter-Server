@@ -2,7 +2,7 @@ import os
 from flask import Flask, flash, request, redirect, url_for, current_app
 from werkzeug.utils import secure_filename
 app = current_app
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 def allowed_file(filename):
     return '.' in filename and \
