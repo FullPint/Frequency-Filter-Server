@@ -27,14 +27,28 @@
       <input type="text" class="form-control" id="a_value" name="a_value" placeholder="">
     </div>
     {% endif %}
-    {% if filter|string == 'ideal_low' %}
+    {% if filter|string == 'ideal_low_pass' %}
     <div class="form-group">
       <h1>Cut Off </h1>
       <label for="a_value">Cut off: </label>
       <input type="text" class="form-control" id="cutoff_value" name="cutoff_value" placeholder="">
     </div>
     {% endif %}
-    {% if filter|string == 'ideal_high' %}
+    {% if filter|string == 'ideal_high_pass' %}
+    <div class="form-group">
+      <h1> Cut off </h1>
+      <label for="a_value">Cut Off: </label>
+      <input type="text" class="form-control" id="cutoff_value" name="cutoff_value" placeholder="">
+    </div>
+    {% endif %}
+    {% if filter|string == 'gaussian_low_pass' %}
+    <div class="form-group">
+      <h1>Cut Off </h1>
+      <label for="a_value">Cut off: </label>
+      <input type="text" class="form-control" id="cutoff_value" name="cutoff_value" placeholder="">
+    </div>
+    {% endif %}
+    {% if filter|string == 'gaussian_high_pass' %}
     <div class="form-group">
       <h1> Cut off </h1>
       <label for="a_value">Cut Off: </label>
