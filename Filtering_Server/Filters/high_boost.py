@@ -11,4 +11,4 @@ class HighBoost(Filter):
     def build_filter(self):
         hp = HP(self.shape, self.cutoff)
         hp.build_filter()
-        self.mask = (A - 1) - hp.get_filter()
+        self.mask = (self.a - 1) - hp.get_filter()
