@@ -3,7 +3,7 @@ from .filter import Filter
 
 class ButterWorthBandPass(Filter):
     def __init__(self, shape, cutoff, order, width):
-        super().__init__(self, shape)
+        super().__init__(shape)
         self.cutoff = cutoff
         self.order = order
         self.width = width
