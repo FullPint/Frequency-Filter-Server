@@ -3,4 +3,4 @@ from .filter import Filter
 
 class UnsharpMask(HighBoost):
     def __init__(self, shape, cutoff):
-        super().__init__(shape, cutoff, A=1)
+        super().__init__(shape, cutoff, a=2)
