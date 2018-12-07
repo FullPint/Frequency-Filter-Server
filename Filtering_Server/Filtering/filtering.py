@@ -1,8 +1,6 @@
 import numpy as np
 import Filtering_Server.Filters as Filters
-from Filtering_Server.FFT.fft import FFT_DIP
-from pprint import pprint
-
+from Filtering_Server.FFT import FFT_DIP
 import uuid
 
 class Filtering:
