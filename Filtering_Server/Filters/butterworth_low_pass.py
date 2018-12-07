@@ -14,6 +14,6 @@ class ButterWorthLowPass(Filter):
             u = index_iterator.multi_index[0]
             v = index_iterator.multi_index[1]
             distance = super().calculate_distance(u, v)
-            filter[u][v] = 1 / (1 + ((distance / self.cutoff) ** (2 * self.order)))
+            mask[u][v] = 1 / (1 + ((distance / self.cutoff) ** (2 * self.order)))
             index_iterator.iternext()
         self.mask = mask
