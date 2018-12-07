@@ -11,7 +11,7 @@ class ButterWorthBandPass(Filter):
     def build_filter(self):
         mask = np.zeros(self.shape)
         index_iterator = np.nditer(mask, flags=['multi_index'])
-        while not index_iterator.finished
+        while not index_iterator.finished:
             u = index_iterator.multi_index[0]
             v = index_iterator.multi_index[1]
             distance = super().calculate_distance(u, v)
