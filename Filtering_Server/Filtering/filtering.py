@@ -1,17 +1,22 @@
 import numpy as np
 import Filtering_Server.Filters as Filters
 from Filtering_Server.FFT.fft import FFT_DIP
+from pprint import pprint
+
+import uuid
 
 class Filtering:
-    def __init__(self, filter_name, image, cutoff=None, order=None, implemntation='numpy'):
+    def __init__(self, image, filter_name, cutoff=None, a_value = None, order = None, implementation = 'numpy'):
+        self.id = uuid.uuid1()
         self.filter_name = filter_name
-        self.img = img
-        self.shape = self.img.shape
+        self.image = image
+        self.shape = image.shape
         self.filter_image = np.zeros(self.shape)
         self.filter_freq_image = np.zeros(self.shape)
         self.cutoff = cutoff
+        self.a_value = a_value
         self.order = order
-        self.fft = FFT_DIP if implemntation != 'numpy' else np.fft
+        self.fft = FFT_DIP if implementation != 'numpy' else np.fft
 
     def get_filter(self):
         if self.filter_name == "buttertworth_high_pass":
@@ -19,11 +24,11 @@ class Filtering:
         elif self.filter_name == "butterworth_low_pass":
             filter = Filters.ButterWorthLowPass(self.shape, self.cutoff, self.order)
         elif self.filter_name == "gaussian_high_pass":
-            filter = Filters.GaussiaHighPass(self.shape, self.cutoff)
+            filter = Filters.GaussianHighPass(self.shape, self.cutoff)
         elif self.filter_name == "gaussian_low_pass":
             filter = Filters.GaussianLowPass(self.shape, self.cutoff)
         elif self.filter_name == "high_boost":
-            filter = Filters.HighBoost(self.shape, self.cutoff, self.A)
+            filter = Filters.HighBoost(self.shape, self.cutoff, self.a_value)
         elif self.filter_name == "ideal_high_pass":
             filter = Filters.IdealHighPass(self.shape, self.cutoff)
         elif self.filter_name == "ideal_low_pass":
@@ -37,15 +42,19 @@ class Filtering:
         return filter
 
     def apply_filter(self):
-        fft_image = self.fft.fftshift(self.image)
-        fft_image = self.fft.fft2(fft_image)
+        fft_image = np.fft.fft2(self.image)
+        fft_image = np.fft.fftshift(fft_image)
         filter = self.get_filter()
-        filter_freq_image = np.multiply(fft_image, filter)
-        self.filter_freq_image = np.uint8(np.log(np.absolute(filter_freq_image)) * 10)
-        filter_image = np.fft.ifftshift(filter_freq_image)
+        filter.build_filter()
+        mask = filter.get_filter()
+        fft_image = np.multiply(fft_image, mask)
+        filter_freq_image = np.uint8(np.log(np.absolute(fft_image)) * 10)
+        filter_image = np.fft.ifftshift(fft_image)
         filter_image = np.fft.ifft2(filter_image)
         filter_image = np.absolute(filter_image)
-        filter_image = post_process_image(filter_image)
+        filter_image = self.post_process_image(filter_image)
+
+        self.filter_freq_image = filter_freq_image
         self.filter_image = filter_image
 
     def post_process_image(self, image):
@@ -60,4 +69,4 @@ class Filtering:
             j = index_iterator.multi_index[1]
             stretch_image[i][j] = (image[i][j] - c_min) * ((new_max - new_min) / (c_max - c_min)) + new_min
             index_iterator.iternext()
-        self.filter_image = stretch_image
+        return stretch_image
