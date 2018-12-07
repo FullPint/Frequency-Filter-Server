@@ -22,13 +22,13 @@ class Filtering:
             filter = Filters.ButterWorthBandPass(self.shape, self.cutoff, self.order, self.width)
         elif self.filter_name == "butterworth_band_reject":
             filter = Filters.ButterWorthBandReject(self.shape, self.cutoff, self.order, self.width)
-        elif self.filter_name == "buttertworth_high_pass":
+        elif self.filter_name == "butterworth_high_pass":
             filter = Filters.ButterWorthHighPass(self.shape, self.cutoff, self.order)
         elif self.filter_name == "butterworth_low_pass":
             filter = Filters.ButterWorthLowPass(self.shape, self.cutoff, self.order)
         elif self.filter_name == "gaussian_band_pass":
             filter = Filters.GaussianBandPass(self.shape, self.cutoff, self.width)
-        elif self.filter_name == "gaussaian_band_reject":
+        elif self.filter_name == "gaussian_band_reject":
             filter = Filters.GaussianBandReject(self.shape, self.cutoff, self.width)
         elif self.filter_name == "gaussian_high_pass":
             filter = Filters.GaussianHighPass(self.shape, self.cutoff)
