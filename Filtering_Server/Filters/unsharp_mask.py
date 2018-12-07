@@ -1,4 +1,4 @@
-from high_boost import HighBoost
+from .high_boost import HighBoost
 from .filter import Filter
 
 class UnsharpMask(HighBoost):

@@ -1,8 +1,10 @@
 import numpy as np
-from .filter import Filter
 from .ideal_low_pass import IdealLowPass
 
-class IdealHighPass(IdealLowPass, Filter):
+class IdealHighPass(IdealLowPass):
     def __init__(self, shape, cutoff):
         super().__init__(shape, cutoff)
-        self.filter = 1 - super().build_filter()
+
+    def build_filter(self):
+        super().build_filter()
+        self.mask = 1 - super().get_filter()
