@@ -2,6 +2,7 @@ from .gaussian_high_pass import GaussianHighPass
 from .gaussian_low_pass import GaussianLowPass
 from .high_boost import HighBoost
 from .ideal_band_pass import IdealBandPass
+from .ideal_band_reject import IdealBandReject
 from .ideal_high_pass import IdealHighPass
 from .ideal_low_pass import IdealLowPass
 from .laplacian_filter import Laplace

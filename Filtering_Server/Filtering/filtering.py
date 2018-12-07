@@ -45,7 +45,7 @@ class Filtering:
         elif self.filter_name == "ideal_low_pass":
             filter = Filters.IdealLowPass(self.shape, self.cutoff)
         elif self.filter_name == "laplacian_filter":
-            filter = Filter.Laplace(self.shape)
+            filter = Filters.Laplace(self.shape)
         elif self.filter_name == "unsharp_mask":
             filter = Filters.UnsharpMask(self.shape, self.cutoff)
         else:
