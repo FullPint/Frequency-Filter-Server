@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <div class="container">
+    <h1> Filtered Image </h1>
+    <img src="{{url_for('static', filename=filter_image)}}" />
+  </div>
+  <div class="container">
+    <h1> Frequency Image </h1>
+    <img src="{{url_for('static', filename=freq_image)}}" />
+  </div>
+</div>
+{% endblock %}
