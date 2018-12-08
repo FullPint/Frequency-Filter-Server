@@ -105,3 +105,4 @@ venv.bak/
 
 # Image uploads
 Filtering_Server/static/Images/
+.DS_Store
