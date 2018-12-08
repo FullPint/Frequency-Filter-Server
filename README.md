@@ -118,8 +118,7 @@ Highboost filters are also relatively simple, as they are essentially the unshar
 
 *Highboost Filter applied to Lenna.png. **Note:** The cutoff of both of these images are 20. The left side has an A value of 2, while the right side has an A value of 5.*
 
+## Findings
+The importance of the Fast Fourier Transform (FFT) cannot be overstated. The FFT algorithms make it computationally feasible to work in the frequency domain, which makes applications such as fast algorithms for discrete sine and cosine transformations possible. These methods have had a huge impact not only on the field of image processing, but also on engineering and computer science at large.
 
-### Bandreject Filters
-
-
-### Bandpass Filters
+We mostly used the NumPy implementation of FFT when generating the images above or testing the program, but we included our own implementation of FFT (listed as "Team B5" under "Select FFT Implementation" when running the application). The NumPy implementation is faster overall.
