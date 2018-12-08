@@ -40,43 +40,58 @@ While it doesn't affect the results, the following images will be generated with
 
 ### Smoothing Frequency Filters
 
+Smoothing can be achieved in the frequency domain by attentuting the high-frequency components of the Fourier transform of a certain image.
+
+The left side of each sample image has a cutoff of 20, while the right side has a cutoff of 100.
+
 #### Ideal Lowpass
 The ideal lowpass filter is the simplest lowpass filter; it essentially "cuts off" all components of the Fourier transform that are higher than a certain cutoff. This cutoff is the distance from the origin of the Fourier transformed image.
 
 ![Lenna | Ideal Lowpass Filter with cutoff of 20 versus a cutoff of 100](report/images/Lenna_ilp_20v100.png)
 
-*Ideal lowpass filter applied to Lenna.png. On the left is a cutoff of 20, and on the right is a cutoff of 100. Note the "ring" effect visible on both images.*
+*Ideal lowpass filter applied to Lenna.png. Note the "ring" effect visible on both images.*
 
 #### Butterworth Lowpass
 The Butterworth lowpass filter is different from the ideal lowpass filter in that it does not have a sharp cutoff value, but instead smoothly transitions between high and low frequencies. A Butterworth lowpass filter with a higher order will produce an image with 'more' lowpass filtering but also will exhibit much more ringing. An order of 2 is usually considered acceptable for most purposes, as it produces a good compromise between lowpass filtering and reducing ringing.
 
 ![Lenna | Butterworth Lowpass Filter with order of 2 and cutoff of 20 versus order of 2 and cutoff of 100](report/images/Lenna_blp_o2_20v100.png)
 
-*Butterworth lowpass filter applied to Lenna.png. On the left is a cutoff of 20 and on the right is a cutoff of 100. Both images have an order of 2.*
+*Butterworth lowpass filter applied to Lenna.png. Both images have an order of 2.*
 
 #### Gaussian Lowpass
-While the smoothing effect of the Gaussian lowpass is not as apparent as the Butterworth, the Gaussian lowpass filter *guarantees* no ringing effect. This is key in situations such as medical imaging, where the introduction of any kind of artifact is unacceptable.
+While the smoothing effect of the Gaussian lowpass is not as apparent as the Butterworth, the Gaussian lowpass filter *guarantees* no ringing effect. This is key in situations such as medical imaging, where the introduction of any kind of artifact is unacceptable. The Gaussian filter for smoothing usually produces better results than the previous two filters.
 
 ![Lenna | Gaussian Lowpass Filter with cutoff of 20 versus a cutoff of 100](report/images/Lenna_gau_20v100.png)
 
-*Gaussian Lowpass filter applied to Lenna.png. On the left is a cutoff of 20 and on the right is a cutoff of 100*
+*Gaussian Lowpass filter applied to Lenna.png.*
 
 
 ### Sharpening Frequency Filters
 
 Image sharpening can be accomplished in the frequency domain by attentuating the low frequencies of the Fourier transform of an image. Note that these images have not bee added back to the original images; thus, only the direct filter output is shown.
 
+The left side of each sample image has a cutoff of 20, while the right side has a cutoff of 100.
+
 #### Ideal Highpass
 This filter is the opposite of the ideal lowpass filter, in that it "cuts off" all components of the Fourier transform that are *lower* than a certain cutoff value. This cutoff value is still the distance from the origin of the Fourier transformed image.
 
 ![Lenna | Ideal Highpass Filter with a cutoff of 20 versus a cutoff of 100](report/images/Lenna_ihp_20v100.png)
 
-*Ideal Highpass Filter applied to Lenna.png. On the left is a cutoff of 20, and on the right is a cutoff of 100.*
+*Ideal Highpass Filter applied to Lenna.png.*
 
 #### Butterworth Highpass
+This filter is the opposite of the Butterworth lowpass filter. Like the ideal highpass, it modifies components of the Fourier transform that are *lower* than a certain value. Again, the Butterworth filter doesn't "cut off" but rather smoothly transforms between the low and high frequencies.
 
+![Lenna | Butterworth Highpass Filter with order of 2 and cutoff of 20 versus order of 2 and cutoff of 100](report/images/Lenna_bhp_o2_20v100.png)
+
+*Butterworth Highpass Filter applied to Lenna.png. Both images have an order of 2.*
 
 #### Gaussian Highpass
+The Gaussian highpass filter is the opposite of the Gaussian lowpass filter. The same qualities of the lowpass filter apply here as well; the Gaussian highpass filter is considered to produce better quality smoothing than the previous two filters.
+
+![Lenna | Gaussian Highpass filter with a cutoff of 20 versus a cutoff of 100](report/images/Lenna_ghp_20v100.png)
+
+*Gaussian Highpass Filter applied to Lenna.png.*
 
 
 #### Laplacian Filter
