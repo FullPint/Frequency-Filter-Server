@@ -102,9 +102,21 @@ The Laplacian filter produces images with edge-lines at large gray-level discont
 *Laplacian Filter applied to Lenna.png. Remember that this is the actual image produced by the Laplacian filter, and **not** the "enhanced" version of the original image. To get this enhanced version, the above image would have to be subtracted from the original.*
 
 #### Unsharp Mask Filter
+Unsharp masking is fairly simply and self-explanatory; it consists of generating a blurred image and then subtracting that image from the original, producing a sharpened version the original.
 
+Essentially, a highpass-filtered image is obtained by subtracting the lowpass-filtered image from the original.
 
-#### High Boost Filter
+![Lenna | Unsharp Mask with a cutoff of 20 versus a cutoff of 100](report/images/Lenna_unsharp_20v100.png)
+
+*Unsharp Mask Filter applied to Lenna.png. Remember that this is simply the image that would be subtracted from the original to produced a sharpened image.*
+
+#### Highboost Filter
+
+Highboost filters are also relatively simple, as they are essentially the unsharp mask filter but with the original image *f(x,y)* multiplied by a constant *A.* This allows for greater control of the contribution of the original image to the sharpening.
+
+![Lenna | Highboost Filter with a cutoff of 20 and an A value of 2 versus a cutoff of 20 and an A value of 5](report/images/Lenna_highb_c20_a2va5.png)
+
+*Highboost Filter applied to Lenna.png. **Note:** The cutoff of both of these images are 20. The left side has an A value of 2, while the right side has an A value of 5.*
 
 
 ### Bandreject Filters
