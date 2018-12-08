@@ -36,7 +36,7 @@ We'll be using the ubiquitous *Lenna* image, found everywhere throughout the fie
 
 ![Lenna](report/images/Lenna.png)
 
-While it doesn't affect the results, the following images will be generated with the Numpy method FFT method instead of the Team B5 method.
+While it doesn't affect the image results, the following images will be generated with the Numpy method FFT method instead of the Team B5 method.
 
 ### Smoothing Frequency Filters
 
@@ -95,7 +95,11 @@ The Gaussian highpass filter is the opposite of the Gaussian lowpass filter. The
 
 
 #### Laplacian Filter
+The Laplacian filter produces images with edge-lines at large gray-level discontinuities. Essentially, this means that the Laplacian filter creates edges at points where the grey level differs harshly, e.g. at actual edges in the original image. The Laplacian filter emphasizes large discontinuties and deemphasizes gray levels that vary slowly. 
 
+![Lenna | Laplacian filter](report/images/Lenna_lap.png)
+
+*Laplacian Filter applied to Lenna.png. Remember that this is the actual image produced by the Laplacian filter, and **not** the "enhanced" version of the original image. To get this enhanced version, the above image would have to be subtracted from the original.*
 
 #### Unsharp Mask Filter
 
