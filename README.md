@@ -55,6 +55,11 @@ The Butterworth lowpass filter is different from the ideal lowpass filter in tha
 *Butterworth lowpass filter applied to Lenna.png. On the left is a cutoff of 20 and on the right is a cutoff of 100. Both images have an order of 2.*
 
 #### Gaussian Lowpass
+While the smoothing effect of the Gaussian lowpass is not as apparent as the Butterworth, the Gaussian lowpass filter *guarantees* no ringing effect. This is key in situations such as medical imaging, where the introduction of any kind of artifact is unacceptable.
+
+![Lenna | Gaussian Lowpass Filter with cutoff of 20 versus of cutoff of 100](report/images/Lenna_gau_20v100.png)
+
+*Gaussian Lowpass filter applied to Lenna.png. On the left is a cutoff of 20 and on the right is a cutoff of 100*
 
 
 ### Sharpening Frequency Filters
