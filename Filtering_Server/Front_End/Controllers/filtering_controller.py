@@ -14,10 +14,14 @@ def filter_view():
     cv2.imwrite(os.path.join(app.config['UPLOAD_FOLDER'], freq_image), f.filter_freq_image)
     freq_image = 'Images/' + freq_image
     return render_template('filter_complete.html',
+                            filter_name = f.filter_name,
                             filter_image = filter_image,
-                            freq_image  = freq_image)
-    #return send_from_directory(app.config['UPLOAD_FOLDER'],
-                               #filter_image)
+                            freq_image  = freq_image,
+                            cutoff = f.cutoff,
+                            a_value = f.a_value,
+                            order = f.order,
+                            width = f.width
+                            )
 def filter():
     path = os.path.join(app.config['FOO'],request.form.get('image_file'))
     image = cv2.imread(path,0)
