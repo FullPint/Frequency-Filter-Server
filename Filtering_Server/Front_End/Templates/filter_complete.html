@@ -1,13 +1,105 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container">
-  <div class="container">
-    <h1> Filtered Image </h1>
-    <img src="{{url_for('static', filename=filter_image)}}" />
+  <div class=" = "row"">
+    <h1>{{filter_name | string}}</h1>
   </div>
-  <div class="container">
-    <h1> Frequency Image </h1>
-    <img src="{{url_for('static', filename=freq_image)}}" />
+  {% if filter_name | string != "laplacian_filter" %}
+  <div class = "row">
+    <div class="col">
+      <h2> Parameters </h2>
+    </div>
+  </div>
+    {%
+      if (filter_name | string == "butterworth_band_pass")
+      or (filter_name | string == "butterworth_band_reject")
+    %}
+    <div class = "row">
+      <div class="col">
+        <h3>Cutoff: {{cutoff | string}}</h3>
+      </div>
+      <div class="col">
+        <h3>Order: {{order | string}}</h3>
+      </div>
+      <div class="col">
+        <h3>Width: {{width | string}}</h3>
+      </div>
+    </div>
+    {% endif %}
+    {%
+      if (filter_name | string == "butterworth_high_pass")
+      or (filter_name | string == "butterworth_low_pass")
+    %}
+    <div class = "row">
+      <div class="col">
+        <h3>Cutoff: {{cutoff | string}}</h3>
+      </div>
+      <div class="col">
+        <h3>Order: {{order | string}}</h3>
+      </div>
+    </div>
+    {% endif %}
+    {%
+      if (filter_name | string == "gaussian_band_pass")
+      or (filter_name | string == "gaussian_band_reject")
+    %}
+    <div class = "row">
+      <div class="col">
+        <h3>Cutoff: {{cutoff | string}}</h3>
+      </div>
+      <div class="col">
+        <h3>Width: {{width | string}}</h3>
+      </div>
+    </div>
+    {% endif %}
+    {%
+      if (filter_name | string == "gaussian_band_pass")
+      or (filter_name | string == "gaussian_band_reject")
+      or (filter_name | string == "ideal_band_pass")
+      or (filter_name | string == "ideal_band_reject")
+    %}
+    <div class = "row">
+      <div class="col">
+        <h3>Cutoff: {{cutoff | string}}</h3>
+      </div>
+      <div class="col">
+        <h3>Width: {{width | string}}</h3>
+      </div>
+    </div>
+    {% endif %}
+    {%
+      if (filter_name | string == "gaussian_low_pass")
+      or (filter_name | string == "gaussian_high_pass")
+      or (filter_name | string == "ideal_low_pass")
+      or (filter_name | string == "ideal_high_pass")
+      or (filter_name | string == "unsharp_mask")
+    %}
+    <div class = "row">
+      <div class="col">
+        <h3>Cutoff: {{cutoff | string}}</h3>
+      </div>
+    </div>
+    {% endif %}
+    {% if filter_name | string == "high_boost" %}
+    <div class = "row">
+      <div class="col">
+        <h3>Cutoff: {{cutoff | string}}</h3>
+      </div>
+      <div class="col">
+        <h3>A Value: {{a_value | string}}</h3>
+      </div>
+    </div>
+    {% endif %}
+  {% endif %}
+  <div class="row">
+    <div class = "col">
+      <h2> Filtered Image </h2>
+      <img src="{{url_for('static', filename=filter_image)}}" />
+    </div>
+    <div class="col">
+      <h2> Frequency Image </h2>
+      <img src="{{url_for('static', filename=freq_image)}}" />
+    </div>
   </div>
 </div>
 {% endblock %}
